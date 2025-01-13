@@ -25,7 +25,10 @@ const ProductFeatures = () => {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-7 md:gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="relative p-px rounded-2xl">
+            <div
+              key={index}
+              className="relative p-px rounded-2xl hover:shadow-[0_0_9px_rgba(0,0,0,0.4)] hover:shadow-sky-900 transition-shadow duration-1000"
+            >
               {/* Content */}
               <div className="relative z-10">
                 <div className="w-full bg-[#030516] rounded-2xl p-8 sm:p-10 hover:shadow-lg transition-shadow duration-300">
@@ -47,7 +50,7 @@ const ProductFeatures = () => {
               </div>
               {/* Glow effect */}
               <div
-                className="glow-dance absolute inset-0 z-0 rounded-2xl opacity-50"
+                className="glow-dance absolute inset-[-1px] z-0 rounded-2xl opacity-50"
                 style={{
                   filter: "blur(2px)",
                 }}

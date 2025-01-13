@@ -43,7 +43,7 @@ body {
 }
 
 .glow-dance {
-  animation: dancingGlow 2.5s linear infinite;
+  animation: dancingGlow 4s cubic-bezier(0.55, 0.055, 0.675, 0.19) infinite;
 }
 
 @keyframes animateToLeft {
@@ -66,36 +66,64 @@ body {
 @keyframes dancingGlow {
   0% {
     background: radial-gradient(
-      20% 50% at 21.63% 70.54%,
-      rgba(255, 255, 255, 0.8) 0%,
+      18.28% 45.92% at 21.63% 70.54%,
+      white 0%,
+      transparent 100%
+    );
+  }
+  12.5% {
+    background: radial-gradient(
+      18.28% 45.92% at 15% 50%,
+      white 0%,
       transparent 100%
     );
   }
   25% {
     background: radial-gradient(
-      20% 50% at 85% 70.54%,
-      rgba(255, 255, 255, 0.8) 0%,
+      18.28% 45.92% at 21.63% 30%,
+      white 0%,
+      transparent 100%
+    );
+  }
+  37.5% {
+    background: radial-gradient(
+      18.28% 45.92% at 50% 15%,
+      white 0%,
       transparent 100%
     );
   }
   50% {
     background: radial-gradient(
-      20% 50% at 85% 30%,
-      rgba(255, 255, 255, 0.8) 0%,
+      18.28% 45.92% at 85% 30%,
+      white 0%,
+      transparent 100%
+    );
+  }
+  62.5% {
+    background: radial-gradient(
+      18.28% 45.92% at 90% 50%,
+      white 0%,
       transparent 100%
     );
   }
   75% {
     background: radial-gradient(
-      20% 50% at 21.63% 30%,
-      rgba(255, 255, 255, 0.8) 0%,
+      18.28% 45.92% at 85% 70.54%,
+      white 0%,
+      transparent 100%
+    );
+  }
+  87.5% {
+    background: radial-gradient(
+      18.28% 45.92% at 50% 85%,
+      white 0%,
       transparent 100%
     );
   }
   100% {
     background: radial-gradient(
-      20% 50% at 21.63% 70.54%,
-      rgba(255, 255, 255, 0.8) 0%,
+      18.28% 45.92% at 21.63% 70.54%,
+      white 0%,
       transparent 100%
     );
   }
