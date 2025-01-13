@@ -60,7 +60,7 @@ const ProjectsSlide = () => {
           ))}
         </div>
       </div>
-      <div className="overflow-hidden flex">
+      <div className="overflow-hidden flex mt-5">
         <div className="animate-to-right overflow-hidden flex min-w-max gap-5 ml-5">
           {projectImages.map((image) => (
             <div key={image.id} className="relative w-auto h-[340px]">

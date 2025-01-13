@@ -34,11 +34,12 @@ body {
 }
 
 .animate-to-left {
-  animation: animateToLeft 25s linear infinite;
+  animation: animateToLeft 30s linear infinite;
   white-space: nowrap;
 }
 .animate-to-right {
-  animation: animateToRight 10s linear infinite;
+  animation: animateToRight 30s linear infinite;
+  white-space: nowrap;
 }
 
 .glow-dance {
