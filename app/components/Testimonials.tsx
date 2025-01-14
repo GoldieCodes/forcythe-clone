@@ -1,6 +1,6 @@
 "use client"
 import Image from "next/image"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 type Company = {
   id: string
@@ -89,6 +89,21 @@ const testimonials: Testimonial[] = [
 
 export default function TestimonialsSection() {
   const [activeCompany, setActiveCompany] = useState<Company>(companies[0])
+  const [companyIndex, setCompanyIndex] = useState(0)
+
+  //this gives the sliding carousel effect for the testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (companyIndex + 1 < companies.length) {
+        setCompanyIndex((prev) => prev + 1)
+      } else {
+        setCompanyIndex(0)
+      }
+      setActiveCompany(companies[companyIndex])
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [companyIndex]) //this dependency is important because companyIndex is altered somewhere within the jsx
 
   return (
     <section className="wrapper py-10">
@@ -104,7 +119,10 @@ export default function TestimonialsSection() {
           {companies.map((company, index) => (
             <button
               key={company.id}
-              onClick={() => setActiveCompany(company)}
+              onClick={() => {
+                setActiveCompany(company)
+                setCompanyIndex(index + 1)
+              }}
               className={`
                 w-full p-[1.1rem] cursor-pointer transition-all duration-300
                 ${index === 0 ? "rounded-s-full" : ""}
@@ -131,12 +149,12 @@ export default function TestimonialsSection() {
 
       {/* testimonial content */}
       {testimonials.map(
-        (testimonial) =>
+        (testimonial, index) =>
           activeCompany.id == testimonial.id && (
             <article
               key={testimonial.author}
               className="mt-5 w-full md:w-[70%] lg:w-[50%] rounded-[1.8rem] flex flex-col sm:flex-row p-5 sm:p-7 bg-accent3 lg:relative"
-              style={{ left: "50%" }}
+              style={{ left: `${index * 12}%` }}
             >
               <div className="sm:basis-[58%] pr-3">
                 <h3 className="text-base font-bold mb-4">
