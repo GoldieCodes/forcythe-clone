@@ -18,16 +18,6 @@ export default {
         darkGrey: "#aea9b1",
         lightGrey: "#e6e0e9",
       },
-      keyframes: {
-        scrollLeft: {
-          "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-100%)" },
-        },
-        scrollRight: {
-          "0%": { transform: "translateX(-100%)" },
-          "100%": { transform: "translateX(0)" },
-        },
-      },
     },
   },
   plugins: [],

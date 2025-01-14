@@ -6,6 +6,15 @@ interface ProjectImage {
   alt: string
 }
 
+export type Direction = "left" | "right"
+
+interface ScrollingAnimationProps {
+  direction: Direction
+  className?: string
+  children: React.ReactNode
+  duration?: number
+}
+
 const projectImages: ProjectImage[] = [
   { id: 0, src: "/images/Project Images/stac.svg", alt: "STAC Project" },
   {
@@ -27,71 +36,61 @@ const projectImages: ProjectImage[] = [
   { id: 5, src: "/images/Project Images/phone.svg", alt: "Phone Project" },
 ]
 
-const ProjectsSlide = () => {
+export const ScrollingAnimation = ({
+  direction,
+  className = "",
+  children,
+}: ScrollingAnimationProps) => {
   return (
-    <section>
-      <div className="overflow-hidden flex">
-        <div className="animate-to-left overflow-hidden flex min-w-max gap-5 ml-5">
-          {projectImages.map((image) => (
-            <div key={image.id} className="relative w-auto h-[340px]">
-              <Image
-                alt={image.alt}
-                src={image.src}
-                width={300}
-                height={300}
-                className="overflow-hidden w-full h-full"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="animate-to-left overflow-hidden flex min-w-max gap-5 ml-5">
-          {projectImages.map((image) => (
-            <div key={image.id} className="relative w-auto h-[340px]">
-              <Image
-                alt={image.alt}
-                src={image.src}
-                width={300}
-                height={300}
-                className="overflow-hidden w-full h-full"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
+    <div className="flex overflow-hidden">
+      <div
+        className={`flex min-w-max gap-5 ${
+          direction === "right" ? "animate-to-right" : "animate-to-left"
+        } ${className}`}
+      >
+        {children}
       </div>
-      <div className="overflow-hidden flex mt-5">
-        <div className="animate-to-right overflow-hidden flex min-w-max gap-5 ml-5">
-          {projectImages.map((image) => (
-            <div key={image.id} className="relative w-auto h-[340px]">
-              <Image
-                alt={image.alt}
-                src={image.src}
-                width={300}
-                height={300}
-                className="overflow-hidden w-full h-full"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="animate-to-right overflow-hidden flex min-w-max gap-5 ml-5">
-          {projectImages.map((image) => (
-            <div key={image.id} className="relative w-auto h-[340px]">
-              <Image
-                alt={image.alt}
-                src={image.src}
-                width={300}
-                height={300}
-                className="overflow-hidden w-full h-full"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
+      <div
+        className={`flex min-w-max gap-5 ${
+          direction === "right" ? "animate-to-right" : "animate-to-left"
+        } ${className}`}
+      >
+        {children}
       </div>
-    </section>
+    </div>
   )
 }
 
+const ProjectsSlide = () => {
+  return (
+    <section>
+      <ScrollingAnimation direction="left">
+        {projectImages.map((image) => (
+          <Image
+            key={image.id}
+            alt={image.alt}
+            src={image.src}
+            width={300}
+            height={300}
+            className="w-full h-[340px]"
+            loading="lazy"
+          />
+        ))}
+      </ScrollingAnimation>
+      <ScrollingAnimation direction="right" className="mt-5">
+        {projectImages.map((image) => (
+          <Image
+            key={image.id}
+            alt={image.alt}
+            src={image.src}
+            width={300}
+            height={300}
+            className="w-full h-[340px]"
+            loading="lazy"
+          />
+        ))}
+      </ScrollingAnimation>
+    </section>
+  )
+}
 export default ProjectsSlide
